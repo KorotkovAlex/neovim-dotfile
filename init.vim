@@ -29,7 +29,8 @@ Plug 'neovim/nvim-lspconfig'
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'https://github.com/preservim/tagbar' " Tagbar for code navigation
 Plug 'sindrets/diffview.nvim'
-
+Plug 'dyng/ctrlsf.vim'
+Plug 'scrooloose/nerdcommenter'
 call plug#end()
 
 :colorscheme darcula
