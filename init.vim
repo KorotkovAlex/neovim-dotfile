@@ -6,7 +6,8 @@
 :set softtabstop=2
 :set mouse=a
 :set encoding=UTF-8
-":set completeopt-=preview " For No Previews
+:set clipboard+=unnamedplus "copy to clipboard
+"set completeopt-=preview " For No Previews
 
 let mapleader = "\<Space>"
 
@@ -45,6 +46,18 @@ nnoremap fg <cmd>Telescope live_grep<cr>
 nnoremap fb <cmd>Telescope buffers<cr>
 nnoremap fh <cmd>Telescope help_tags<cr>
 
+lua << EOF
+require('telescope').setup {
+  defaults = {
+    file_ignore_patterns = {
+        "node_modules",
+				".git",
+				"tmp",
+				"build"
+    },
+  }
+}
+EOF
 nmap <leader>ts :TagbarToggle <CR>
 
 let g:Tlist_Ctags_Cmd='/usr/local/Cellar/ctags/5.8_1/bin/ctags'
@@ -54,6 +67,11 @@ let g:NERDTreeDirArrowCollapsible="~"
 let g:NERDTreeIgnore = ['^build$']
 autocmd VimEnter * NERDTree
 
+let g:ctrlsf_ignore_dir = ['log', 'node_modules', 'build', '.vscode', 'tmp', '.idea']
+
+
+
+"Airline
 let g:airline_powerline_fonts = 1
 
 if !exists('g:airline_symbols')
