@@ -23,7 +23,6 @@ Plug 'https://github.com/preservim/nerdtree' " NerdTree
 Plug 'https://github.com/tpope/vim-commentary' " For Commenting gcc & gc
 Plug 'https://github.com/vim-airline/vim-airline' " Status bar
 Plug 'https://github.com/ryanoasis/vim-devicons' " Developer Icons
-Plug 'https://github.com/tc50cal/vim-terminal' " Vim Terminal
 Plug 'blueshirts/darcula'
 Plug 'akinsho/toggleterm.nvim'
 Plug 'neovim/nvim-lspconfig'
@@ -31,7 +30,6 @@ Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'https://github.com/preservim/tagbar' " Tagbar for code navigation
 Plug 'sindrets/diffview.nvim'
 Plug 'dyng/ctrlsf.vim'
-Plug 'scrooloose/nerdcommenter'
 call plug#end()
 
 :colorscheme darcula
