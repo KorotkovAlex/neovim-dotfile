@@ -27,9 +27,13 @@ Plug 'blueshirts/darcula'
 Plug 'akinsho/toggleterm.nvim'
 Plug 'neovim/nvim-lspconfig'
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
+Plug 'neovim/nvim-lspconfig'
 Plug 'https://github.com/preservim/tagbar' " Tagbar for code navigation
 Plug 'sindrets/diffview.nvim'
 Plug 'dyng/ctrlsf.vim'
+Plug 'christoomey/vim-tmux-navigator'
+Plug 'iamcco/markdown-preview.nvim', { 'do': 'cd app && yarn install'  }
+
 call plug#end()
 
 :colorscheme darcula
@@ -85,4 +89,8 @@ let g:airline_symbols.branch = ''
 let g:airline_symbols.readonly = ''
 let g:airline_symbols.linenr = ''
 
-
+" Coc
+nmap <leader>gd <Plug>(coc-definition)
+nmap <leader>gy <Plug>(coc-type-definition)
+nmap <leader>gi <Plug>(coc-implementation)
+nmap <leader gr <Plug>(coc-references)
