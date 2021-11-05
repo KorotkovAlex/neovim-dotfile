@@ -7,8 +7,7 @@
 :set mouse=a
 :set encoding=UTF-8
 :set clipboard+=unnamedplus "copy to clipboard
-"set completeopt-=preview " For No Previews
-
+:set guicursor=i:ver100-iCursor
 let mapleader = "\<Space>"
 
 " Install plugins
@@ -19,12 +18,8 @@ Plug 'nvim-lua/plenary.nvim'
 Plug 'nvim-lua/telescope.nvim'
 
 Plug 'http://github.com/tpope/vim-surround' " Surrounding ysw)
-Plug 'https://github.com/preservim/nerdtree' " NerdTree
 Plug 'https://github.com/tpope/vim-commentary' " For Commenting gcc & gc
-Plug 'https://github.com/vim-airline/vim-airline' " Status bar
-Plug 'https://github.com/ryanoasis/vim-devicons' " Developer Icons
-Plug 'blueshirts/darcula'
-Plug 'akinsho/toggleterm.nvim'
+Plug 'blueshirts/darcula' "Color schema
 Plug 'neovim/nvim-lspconfig'
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'neovim/nvim-lspconfig'
@@ -34,14 +29,12 @@ Plug 'dyng/ctrlsf.vim'
 Plug 'christoomey/vim-tmux-navigator'
 Plug 'iamcco/markdown-preview.nvim', { 'do': 'cd app && yarn install'  }
 
+Plug 'kyazdani42/nvim-web-devicons' "For file icons
+Plug 'kyazdani42/nvim-tree.lua'
+Plug 'terryma/vim-multiple-cursors'
 call plug#end()
 
 :colorscheme darcula
-" nertree shortcuts
-nnoremap <C-f> :NERDTreeFocus<CR>
-nnoremap <C-n> :NERDTree<CR>
-nnoremap <C-t> :NERDTreeToggle<CR>
-
 " telescope shortcuts
 nnoremap ff <cmd>Telescope find_files<cr>
 nnoremap fg <cmd>Telescope live_grep<cr>
@@ -63,34 +56,22 @@ EOF
 nmap <leader>ts :TagbarToggle <CR>
 
 let g:Tlist_Ctags_Cmd='/usr/local/Cellar/ctags/5.8_1/bin/ctags'
-"NerdTree
-let g:NERDTreeDirArrowExpandable="+"
-let g:NERDTreeDirArrowCollapsible="~"
-let g:NERDTreeIgnore = ['^build$']
-autocmd VimEnter * NERDTree
-
 let g:ctrlsf_ignore_dir = ['log', 'node_modules', 'build', '.vscode', 'tmp', '.idea']
-
-
-
-"Airline
-let g:airline_powerline_fonts = 1
-
-if !exists('g:airline_symbols')
-    let g:airline_symbols = {}
-endif
-
-" airline symbols
-let g:airline_left_sep = ''
-let g:airline_left_alt_sep = ''
-let g:airline_right_sep = ''
-let g:airline_right_alt_sep = ''
-let g:airline_symbols.branch = ''
-let g:airline_symbols.readonly = ''
-let g:airline_symbols.linenr = ''
-
 " Coc
 nmap <leader>gd <Plug>(coc-definition)
 nmap <leader>gy <Plug>(coc-type-definition)
 nmap <leader>gi <Plug>(coc-implementation)
-nmap <leader gr <Plug>(coc-references)
+nmap <leader>gr <Plug>(coc-references)
+
+nnoremap <C-n> :NvimTreeToggle<CR>
+nnoremap <leader>r :NvimTreeRefresh<CR>
+nnoremap <leader>n :NvimTreeFindFile<CR>
+" NvimTreeOpen, NvimTreeClose, NvimTreeFocus, NvimTreeFindFileToggle, and NvimTreeResize are also available if you need them
+
+" set termguicolors " this variable must be enabled for colors to be applied properly
+
+" a list of groups can be found at `:help nvim_tree_highlight`
+highlight NvimTreeFolderIcon guibg=blue
+lua << EOF
+require'nvim-tree'.setup {}
+EOF
