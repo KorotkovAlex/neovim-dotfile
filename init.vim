@@ -3,11 +3,11 @@
 :set tabstop=2
 :set shiftwidth=2
 :set smarttab
+:set expandtab 
 :set softtabstop=2
 :set mouse=a
 :set encoding=UTF-8
 :set clipboard+=unnamedplus "copy to clipboard
-:set guicursor=i:ver100-iCursor
 let mapleader = "\<Space>"
 
 " Install plugins
@@ -31,7 +31,8 @@ Plug 'iamcco/markdown-preview.nvim', { 'do': 'cd app && yarn install'  }
 
 Plug 'kyazdani42/nvim-web-devicons' "For file icons
 Plug 'kyazdani42/nvim-tree.lua'
-Plug 'terryma/vim-multiple-cursors'
+Plug 'mg979/vim-visual-multi', {'branch': 'master'}
+Plug 'vim-test/vim-test'
 call plug#end()
 
 :colorscheme darcula
@@ -53,7 +54,11 @@ require('telescope').setup {
   }
 }
 EOF
-nmap <leader>ts :TagbarToggle <CR>
+
+"Set comment
+nmap <leader>/ gcc
+"File safe
+nmap <leader>fs :w<CR> :echo "File saved"<CR>
 
 let g:Tlist_Ctags_Cmd='/usr/local/Cellar/ctags/5.8_1/bin/ctags'
 let g:ctrlsf_ignore_dir = ['log', 'node_modules', 'build', '.vscode', 'tmp', '.idea']
@@ -63,10 +68,9 @@ nmap <leader>gy <Plug>(coc-type-definition)
 nmap <leader>gi <Plug>(coc-implementation)
 nmap <leader>gr <Plug>(coc-references)
 
-nnoremap <C-n> :NvimTreeToggle<CR>
-nnoremap <leader>r :NvimTreeRefresh<CR>
-nnoremap <leader>n :NvimTreeFindFile<CR>
-" NvimTreeOpen, NvimTreeClose, NvimTreeFocus, NvimTreeFindFileToggle, and NvimTreeResize are also available if you need them
+nmap <leader>ts :TagbarToggle <CR>
+nnoremap <leader>tt :NvimTreeToggle<CR>
+nnoremap <leader>tr :NvimTreeRefresh<CR>
 
 " set termguicolors " this variable must be enabled for colors to be applied properly
 
@@ -75,3 +79,10 @@ highlight NvimTreeFolderIcon guibg=blue
 lua << EOF
 require'nvim-tree'.setup {}
 EOF
+
+"Tests
+nmap <silent> t<C-n> :TestNearest<CR>
+nmap <silent> t<C-f> :TestFile<CR>
+nmap <silent> t<C-s> :TestSuite<CR>
+nmap <silent> t<C-l> :TestLast<CR>
+nmap <silent> t<C-g> :TestVisit<CR>
